@@ -29,5 +29,10 @@ namespace YourNamespace.Controllers
             }
             return View("~/Views/Home/AddDish.cshtml", dish);
         }
+        public async Task<IActionResult> ListDishes()
+        {
+            var dishes = await _dishesCollection.Find(d => true).ToListAsync();
+            return View("~/Views/Home/ListDishes.cshtml", dishes);
+        }
     }
 }

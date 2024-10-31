@@ -1,0 +1,28 @@
+<!-- Views/Home/ListDishes.cshtml -->
+@model IEnumerable<YourNamespace.Models.Dish>
+
+@{
+    ViewData["Title"] = "Список страв";
+}
+
+<h1>Список страв</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Назва</th>
+            <th>Категорія</th>
+            <th>Ціна (грн)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var dish in Model)
+        {
+            <tr>
+                <td>@dish.Name</td>
+                <td>@dish.Category</td>
+                <td>@dish.Price</td>
+            </tr>
+        }
+    </tbody>
+</table>
