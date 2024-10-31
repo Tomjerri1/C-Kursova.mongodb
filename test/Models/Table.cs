@@ -13,7 +13,7 @@ namespace YourNamespace.Models
         [Range(1, int.MaxValue, ErrorMessage = "Номер столика має бути більшим або рівним 1.")]
         public int TableNumber { get; set; }
 
-        [BsonDefaultValue(true)] // Додаємо значення за замовчуванням
-        public bool IsAvailable { get; set; } // Ця властивість не обов'язкова для вказування при створенні
+        [BsonDefaultValue(true)]
+        public bool IsAvailable { get; set; }
     }
 }

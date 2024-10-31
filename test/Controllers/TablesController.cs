@@ -16,7 +16,7 @@ namespace YourNamespace.Controllers
         [HttpGet]
         public IActionResult AddTable()
         {
-            return View("~/Views/Home/AddTable.cshtml"); // Вказуємо повний шлях до представлення
+            return View("~/Views/Home/AddTable.cshtml");
         }
 
         [HttpPost]
@@ -24,13 +24,12 @@ namespace YourNamespace.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Встановлюємо IsAvailable в true при додаванні нового столика
                 table.IsAvailable = true;
 
                 _tables.InsertOne(table);
                 return RedirectToAction("Index", "Home");
             }
-            return View("~/Views/Home/AddTable.cshtml", table); // Вказуємо повний шлях до представлення
+            return View("~/Views/Home/AddTable.cshtml", table);
         }
     }
 }
