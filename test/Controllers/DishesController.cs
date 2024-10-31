@@ -1,7 +1,7 @@
-// Controllers/DishesController.cs
 using Microsoft.AspNetCore.Mvc;
-using YourNamespace.Models;
 using MongoDB.Driver;
+using System.Threading.Tasks;
+using YourNamespace.Models;
 
 namespace YourNamespace.Controllers
 {
@@ -14,25 +14,68 @@ namespace YourNamespace.Controllers
             _dishesCollection = database.GetCollection<Dish>("Dishes");
         }
 
+        [HttpGet]
         public IActionResult AddDish()
         {
             return View("~/Views/Home/AddDish.cshtml");
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddDish(Dish dish)
+        public async Task<IActionResult> AddDish(Dish newDish)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                await _dishesCollection.InsertOneAsync(dish);
-                return RedirectToAction("Index", "Home");
+                return View("~/Views/Home/AddDish.cshtml", newDish);
             }
-            return View("~/Views/Home/AddDish.cshtml", dish);
+
+            await _dishesCollection.InsertOneAsync(newDish);
+            return RedirectToAction("ManageDishes");
         }
+
         public async Task<IActionResult> ListDishes()
         {
             var dishes = await _dishesCollection.Find(d => true).ToListAsync();
             return View("~/Views/Home/ListDishes.cshtml", dishes);
+        }
+
+        public async Task<IActionResult> ManageDishes()
+        {
+            var dishes = await _dishesCollection.Find(d => true).ToListAsync();
+            return View("~/Views/Home/ManageDishes.cshtml", dishes);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(string id)
+        {
+            var dish = await _dishesCollection.Find(d => d.Id == id).FirstOrDefaultAsync();
+            if (dish == null)
+            {
+                return NotFound();
+            }
+            return View("~/Views/Home/EditDish.cshtml", dish);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Dish updatedDish)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("~/Views/Home/EditDish.cshtml", updatedDish);
+            }
+
+            await _dishesCollection.ReplaceOneAsync(d => d.Id == updatedDish.Id, updatedDish);
+            return RedirectToAction("ManageDishes");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var result = await _dishesCollection.DeleteOneAsync(d => d.Id == id);
+            if (result.DeletedCount == 0)
+            {
+                return NotFound();
+            }
+            return RedirectToAction("ManageDishes");
         }
     }
 }

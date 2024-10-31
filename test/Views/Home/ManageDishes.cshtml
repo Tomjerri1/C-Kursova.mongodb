@@ -1,0 +1,35 @@
+<!-- Views/Home/ManageDishes.cshtml -->
+@model IEnumerable<YourNamespace.Models.Dish>
+
+@{
+    ViewData["Title"] = "Керування стравами";
+}
+
+<h1>Керування стравами</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Назва</th>
+            <th>Категорія</th>
+            <th>Ціна (грн)</th>
+            <th>Дії</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var dish in Model)
+        {
+            <tr>
+                <td>@dish.Name</td>
+                <td>@dish.Category</td>
+                <td>@dish.Price</td>
+                <td>
+                    <a asp-controller="Dishes" asp-action="Edit" asp-route-id="@dish.Id" class="btn btn-warning">Редагувати</a>
+                    <form asp-controller="Dishes" asp-action="Delete" asp-route-id="@dish.Id" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Видалити</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
