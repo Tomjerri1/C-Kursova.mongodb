@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
-using YourNamespace.Models;
+using YourNamespace.Models; // Замініть на свій простір імен
 
 namespace YourNamespace.Controllers
 {
@@ -8,8 +8,9 @@ namespace YourNamespace.Controllers
     {
         private readonly IMongoCollection<Table> _tables;
 
-        public TablesController(IMongoDatabase database)
+        public TablesController(IMongoClient client)
         {
+            var database = client.GetDatabase("restaurant");
             _tables = database.GetCollection<Table>("Tables");
         }
 
@@ -24,12 +25,19 @@ namespace YourNamespace.Controllers
         {
             if (ModelState.IsValid)
             {
-                table.IsAvailable = true;
+                table.IsAvailable = true; // Завжди ставимо доступність в true при створенні нового столу
 
                 _tables.InsertOne(table);
                 return RedirectToAction("Index", "Home");
             }
             return View("~/Views/Home/AddTable.cshtml", table);
+        }
+
+        [HttpGet]
+        public IActionResult ListTables()
+        {
+            var tables = _tables.Find(table => true).ToList(); // Отримуємо всі столи
+            return View("~/Views/Home/ListTables.cshtml", tables); // Повертаємо списку столів до представлення
         }
     }
 }

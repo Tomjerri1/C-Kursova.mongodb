@@ -14,6 +14,6 @@ namespace YourNamespace.Models
         public int TableNumber { get; set; }
 
         [BsonDefaultValue(true)]
-        public bool IsAvailable { get; set; }
+        public bool IsAvailable { get; set; } = true;
     }
 }

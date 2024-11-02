@@ -1,0 +1,23 @@
+@model List<YourNamespace.Models.Table>
+
+<h2>Список столів</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Номер столика</th>
+            <th>Доступність</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var table in Model)
+        {
+            <tr>
+                <td>@table.TableNumber</td>
+                <td>@(table.IsAvailable ? "Вільний" : "Зайнятий")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Назад</a>
