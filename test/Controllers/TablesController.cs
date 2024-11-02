@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
-using YourNamespace.Models; // Замініть на свій простір імен
+using YourNamespace.Models;
 
 namespace YourNamespace.Controllers
 {
@@ -25,7 +25,7 @@ namespace YourNamespace.Controllers
         {
             if (ModelState.IsValid)
             {
-                table.IsAvailable = true; // Завжди ставимо доступність в true при створенні нового столу
+                table.IsAvailable = true;
 
                 _tables.InsertOne(table);
                 return RedirectToAction("Index", "Home");
@@ -36,8 +36,8 @@ namespace YourNamespace.Controllers
         [HttpGet]
         public IActionResult ListTables()
         {
-            var tables = _tables.Find(table => true).ToList(); // Отримуємо всі столи
-            return View("~/Views/Home/ListTables.cshtml", tables); // Повертаємо списку столів до представлення
+            var tables = _tables.Find(table => true).ToList();
+            return View("~/Views/Home/ListTables.cshtml", tables);
         }
     }
 }

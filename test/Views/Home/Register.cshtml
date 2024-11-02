@@ -1,0 +1,56 @@
+@model YourNamespace.Models.Employee
+
+<h2>Реєстрація працівника</h2>
+
+<form asp-action="Register" method="post">
+    <div>
+        <label asp-for="FirstName">Ім'я</label>
+        <input asp-for="FirstName" required />
+    </div>
+    <div>
+        <label asp-for="LastName">Прізвище</label>
+        <input asp-for="LastName" required />
+    </div>
+    <div>
+        <label asp-for="Role">Роль</label>
+        <select asp-for="Role" required>
+            <option value="">Оберіть роль</option>
+            <option value="Офіціант">Офіціант</option>
+            <option value="Адміністратор">Адміністратор</option>
+        </select>
+    </div>
+    <div id="workDays" style="display:none;">
+        <h4>Дні роботи</h4>
+        <input type="checkbox" name="WorkDays" value="Пн" /> Пн
+        <input type="checkbox" name="WorkDays" value="Вт" /> Вт
+        <input type="checkbox" name="WorkDays" value="Ср" /> Ср
+        <input type="checkbox" name="WorkDays" value="Чт" /> Чт
+        <input type="checkbox" name="WorkDays" value="Пт" /> Пт
+        <input type="checkbox" name="WorkDays" value="Сб" /> Сб
+    </div>
+    <div>
+        <label>Логін</label>
+        <input type="text" name="username" required />
+    </div>
+    <div>
+        <label>Пароль</label>
+        <input type="password" name="password" required />
+    </div>
+    <div>
+        <button type="submit">Зареєструвати</button>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Назад</a>
+    </div>
+</form>
+
+@section Scripts {
+    <script>
+        document.querySelector('select[name="Role"]').addEventListener('change', function() {
+            const workDaysDiv = document.getElementById('workDays');
+            if (this.value === 'Офіціант') {
+                workDaysDiv.style.display = 'block';
+            } else {
+                workDaysDiv.style.display = 'none';
+            }
+        });
+    </script>
+}
