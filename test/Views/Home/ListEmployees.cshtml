@@ -1,0 +1,38 @@
+@model List<YourNamespace.Models.Employee>
+
+@{
+    ViewData["Title"] = "Список працівників";
+}
+
+<h1>Список працівників</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ім'я</th>
+            <th>Прізвище</th>
+            <th>Роль</th>
+            <th>Логін</th>
+            <th>Дії</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.FirstName</td>
+                <td>@employee.LastName</td>
+                <td>@employee.Role</td>
+                <td>@employee.Login</td>
+                <td>
+                    <form asp-action="DeleteEmployee" method="post">
+                        <input type="hidden" name="id" value="@employee.Id" />
+                        <button type="submit" class="btn btn-danger">Видалити</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Назад</a>

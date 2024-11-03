@@ -37,5 +37,17 @@ namespace YourNamespace.Controllers
 
             return View("~/Views/Home/Register.cshtml", employee);
         }
+        public IActionResult ListEmployees()
+        {
+            var employees = _employees.Find(emp => true).ToList();
+            return View("~/Views/Home/ListEmployees.cshtml", employees);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteEmployee(string id)
+        {
+            _employees.DeleteOne(emp => emp.Id == id);
+            return RedirectToAction("ListEmployees");
+        }
     }
 }
