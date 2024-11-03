@@ -1,19 +1,18 @@
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using YourNamespace.Models;
+using System.Linq;
 
 namespace YourNamespace.Controllers
 {
     public class EmployeesController : Controller
     {
         private readonly IMongoCollection<Employee> _employees;
-        private readonly IMongoCollection<Key> _keys;
 
         public EmployeesController(IMongoClient client)
         {
             var database = client.GetDatabase("restaurant");
             _employees = database.GetCollection<Employee>("Employees");
-            _keys = database.GetCollection<Key>("Keys");
         }
 
         [HttpGet]
@@ -23,18 +22,19 @@ namespace YourNamespace.Controllers
         }
 
         [HttpPost]
-        public IActionResult Register(Employee employee, string username, string password)
+        public IActionResult Register(Employee employee)
         {
+            if (_employees.AsQueryable().Any(e => e.Login == employee.Login))
+            {
+                ModelState.AddModelError("Login", "Цей логін вже зайнятий. Придумайте інший.");
+            }
+
             if (ModelState.IsValid)
             {
-                var key = new Key { Username = username, Password = password };
-                _keys.InsertOne(key);
-
-                employee.KeyId = key.Id;
-                _employees.InsertOne(employee);
-
+                 _employees.InsertOne(employee);
                 return RedirectToAction("Index", "Home");
             }
+
             return View("~/Views/Home/Register.cshtml", employee);
         }
     }

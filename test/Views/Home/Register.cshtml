@@ -4,52 +4,59 @@
 
 <form asp-action="Register" method="post">
     <div>
-        <label asp-for="FirstName">Ім'я</label>
-        <input asp-for="FirstName" required />
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
     </div>
     <div>
-        <label asp-for="LastName">Прізвище</label>
-        <input asp-for="LastName" required />
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
     </div>
+
     <div>
-        <label asp-for="Role">Роль</label>
-        <select asp-for="Role" required>
-            <option value="">Оберіть роль</option>
-            <option value="Офіціант">Офіціант</option>
-            <option value="Адміністратор">Адміністратор</option>
+        <label asp-for="Role"></label>
+        <select asp-for="Role">
+            <option value="">--Виберіть роль--</option>
+            <option value="Waiter">Офіціант</option>
+            <option value="Administrator">Адміністратор</option>
         </select>
+        <span asp-validation-for="Role"></span>
     </div>
-    <div id="workDays" style="display:none;">
-        <h4>Дні роботи</h4>
-        <input type="checkbox" name="WorkDays" value="Пн" /> Пн
-        <input type="checkbox" name="WorkDays" value="Вт" /> Вт
-        <input type="checkbox" name="WorkDays" value="Ср" /> Ср
-        <input type="checkbox" name="WorkDays" value="Чт" /> Чт
-        <input type="checkbox" name="WorkDays" value="Пт" /> Пт
-        <input type="checkbox" name="WorkDays" value="Сб" /> Сб
+
+    <div id="workingDays" style="display:none;">
+        <label>Дні роботи:</label><br />
+        <input type="checkbox" name="WorkingDays" value="Monday" /> Понеділок<br />
+        <input type="checkbox" name="WorkingDays" value="Tuesday" /> Вівторок<br />
+        <input type="checkbox" name="WorkingDays" value="Wednesday" /> Середа<br />
+        <input type="checkbox" name="WorkingDays" value="Thursday" /> Четвер<br />
+        <input type="checkbox" name="WorkingDays" value="Friday" /> П'ятниця<br />
+        <input type="checkbox" name="WorkingDays" value="Saturday" /> Субота<br />
+    </div>
+
+    <div>
+        <label asp-for="Login"></label>
+        <input asp-for="Login" />
+        <span asp-validation-for="Login" class="text-danger"></span>
     </div>
     <div>
-        <label>Логін</label>
-        <input type="text" name="username" required />
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
     </div>
-    <div>
-        <label>Пароль</label>
-        <input type="password" name="password" required />
-    </div>
-    <div>
-        <button type="submit">Зареєструвати</button>
-        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Назад</a>
-    </div>
+
+    <button type="submit">Зареєструвати</button>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Назад</a>
 </form>
 
 @section Scripts {
     <script>
         document.querySelector('select[name="Role"]').addEventListener('change', function() {
-            const workDaysDiv = document.getElementById('workDays');
-            if (this.value === 'Офіціант') {
-                workDaysDiv.style.display = 'block';
+            const workingDaysDiv = document.getElementById('workingDays');
+            if (this.value === 'Waiter') {
+                workingDaysDiv.style.display = 'block';
             } else {
-                workDaysDiv.style.display = 'none';
+                workingDaysDiv.style.display = 'none';
             }
         });
     </script>
