@@ -1,0 +1,22 @@
+<div class="button-container">
+    <a asp-controller="Employees" asp-action="RegisterWaiter" class="btn btn-primary">Реєстрація офіціанта</a>
+    <a asp-action="ListWaiters" asp-controller="Employees" class="btn btn-primary">Список офіціантів</a>
+    <a asp-action="WaitersWorkingToday" asp-controller="Employees" class="btn btn-primary">Офіціанти, які працюють сьогодні</a>
+    <a asp-controller="Tables" asp-action="AddTable" class="btn btn-primary">Додати столик</a>
+    <a asp-controller="Dishes" asp-action="AddDish" class="btn btn-primary">Додати страву</a>
+    <a asp-controller="Dishes" asp-action="ManageDishes" class="btn btn-primary">Керування стравами</a>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Назад</a>
+</div>
+
+<style>
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .btn {
+        margin-bottom: 10px;
+    }
+</style>

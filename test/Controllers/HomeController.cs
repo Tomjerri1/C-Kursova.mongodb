@@ -9,5 +9,9 @@ namespace YourNamespace.Controllers
         {
             return View();
         }
+        public IActionResult Administrator()
+        {
+            return View();
+        }
     }
 }

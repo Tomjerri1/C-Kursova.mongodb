@@ -1,0 +1,33 @@
+@model List<YourNamespace.Models.Employee>
+
+<h2>Офіціанти, які працюють сьогодні</h2>
+
+@if (Model.Any())
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Ім'я</th>
+                <th>Прізвище</th>
+                <th>Роль</th>
+                <th>Дні роботи</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in Model)
+            {
+                <tr>
+                    <td>@employee.FirstName</td>
+                    <td>@employee.LastName</td>
+                    <td>@employee.Role</td>
+                    <td>@string.Join(", ", employee.WorkingDays)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Сьогодні немає офіціантів на зміні.</p>
+}
+<a asp-controller="Home" asp-action="Administrator" class="btn btn-secondary">Назад</a>

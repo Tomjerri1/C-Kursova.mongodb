@@ -26,24 +26,36 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRUYWJsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/maksi/Desktop/Лабораторні/3 Курс/1 семестр/Курсач/test/Views/Home/Administrator.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbmlzdHJhdG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/maksi/Desktop/Лабораторні/3 Курс/1 семестр/Курсач/test/Views/Home/EditDish.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFZGl0RGlzaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/maksi/Desktop/Лабораторні/3 Курс/1 семестр/Курсач/test/Views/Home/GetPasswordByLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHZXRQYXNzd29yZEJ5TG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/maksi/Desktop/Лабораторні/3 Курс/1 семестр/Курсач/test/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/maksi/Desktop/Лабораторні/3 Курс/1 семестр/Курсач/test/Views/Home/ListAdmins.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMaXN0QWRtaW5zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/maksi/Desktop/Лабораторні/3 Курс/1 семестр/Курсач/test/Views/Home/ListDishes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMaXN0RGlzaGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/maksi/Desktop/Лабораторні/3 Курс/1 семестр/Курсач/test/Views/Home/ListEmployees.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMaXN0RW1wbG95ZWVzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/maksi/Desktop/Лабораторні/3 Курс/1 семестр/Курсач/test/Views/Home/ListTables.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMaXN0VGFibGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/maksi/Desktop/Лабораторні/3 Курс/1 семестр/Курсач/test/Views/Home/ListWaiters.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMaXN0V2FpdGVycy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/maksi/Desktop/Лабораторні/3 Курс/1 семестр/Курсач/test/Views/Home/ManageDishes.cshtml]
@@ -60,6 +72,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/maksi/Desktop/Лабораторні/3 Курс/1 семестр/Курсач/test/Views/Home/RegisterWaiter.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3RlcldhaXRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/maksi/Desktop/Лабораторні/3 Курс/1 семестр/Курсач/test/Views/Home/WaitersWorkingToday.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxXYWl0ZXJzV29ya2luZ1RvZGF5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/maksi/Desktop/Лабораторні/3 Курс/1 семестр/Курсач/test/Views/Shared/Error.cshtml]

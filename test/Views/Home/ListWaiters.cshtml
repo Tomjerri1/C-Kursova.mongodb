@@ -1,0 +1,28 @@
+@model List<YourNamespace.Models.Employee>
+
+<h2>Title</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ім'я</th>
+            <th>Прізвище</th>
+            <th>Роль</th>
+            <th>Дії</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var waiter in Model)
+        {
+            <tr>
+                <td>@waiter.FirstName</td>
+                <td>@waiter.LastName</td>
+                <td>@waiter.Role</td>
+                <td>
+                    <a href="@Url.Action("DeleteEmployee", "Employees", new { id = waiter.Id })" class="btn btn-danger">Видалити</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Home" asp-action="Administrator" class="btn btn-secondary">Назад</a>

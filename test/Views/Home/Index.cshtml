@@ -7,12 +7,32 @@
         <h1 class="display-4">Привіт хуйлан</h1>
     </div>
 </a>
+<div class="button-container">
+    <a asp-controller="Dishes" asp-action="ListDishes" class="btn btn-primary">Переглянути страви</a>
+    <a asp-controller="Tables" asp-action="ListTables" class="btn btn-primary">Переглянути столи</a>
+    <a asp-action="Administrator" asp-controller="Home" class="btn btn-primary">Адміністратор</a>
+    <a asp-controller="Employees" asp-action="RegisterAdministrator" class="btn btn-primary">Реєстрація адміністратора</a>
+    <a asp-action="ListAdmins" asp-controller="Employees" class="btn btn-primary">Список Адміністраторів</a>
+</div>
 
-<a asp-controller="Dishes" asp-action="AddDish" class="btn btn-primary">Додати страву</a>
-<a asp-controller="Dishes" asp-action="ListDishes" class="btn btn-primary">Переглянути страви</a>
-<a asp-controller="Dishes" asp-action="ManageDishes" class="btn btn-primary">Керування стравами</a>
-<a asp-controller="Tables" asp-action="AddTable" class="btn btn-primary">Додати столик</a>
-<a asp-controller="Tables" asp-action="ListTables" class="btn btn-primary">Переглянути столи</a>
-<a asp-controller="Employees" asp-action="RegisterWaiter" class="btn btn-primary">Реєстрація офіціанта</a>
-<a asp-controller="Employees" asp-action="RegisterAdministrator" class="btn btn-primary">Реєстрація адміністратора</a>
-<a asp-controller="Employees" asp-action="ListEmployees" class="btn btn-primary">Список працівників</a>
+<a asp-action="GetPasswordByLogin" asp-controller="Employees" class="btn btn-primary top-right-btn">Відновити пароль</a>
+<style>
+    .top-right-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+</style>
+
+<style>
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .btn {
+        margin-bottom: 10px;
+    }
+</style>

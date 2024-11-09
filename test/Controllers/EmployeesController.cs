@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using YourNamespace.Models;
 using System.Linq;
+using MongoDB.Bson; // Для ObjectId
 
 namespace YourNamespace.Controllers
 {
@@ -67,17 +68,62 @@ namespace YourNamespace.Controllers
 
             return View("~/Views/Home/RegisterAdministrator.cshtml", employee);
         }
-        public IActionResult ListEmployees()
+        public IActionResult ListWaiters()
         {
-            var employees = _employees.Find(emp => true).ToList();
-            return View("~/Views/Home/ListEmployees.cshtml", employees);
+            var waiters = _employees.Find(e => e.Role == "Waiter").ToList();
+            return View("~/Views/Home/ListWaiters.cshtml", waiters);
+        }
+        public IActionResult ListAdmins()
+        {
+            var admins = _employees.Find(e => e.Role == "Administrator").ToList();
+            return View("~/Views/Home/ListAdmins.cshtml", admins);
+        }
+
+        public IActionResult DeleteEmployee(string id)
+        {
+            if (ObjectId.TryParse(id, out ObjectId objectId))
+            {
+                var filter = Builders<Employee>.Filter.Eq("_id", objectId);
+                _employees.DeleteOne(filter);
+            }
+            else
+            {
+                TempData["Error"] = "Невірний ідентифікатор працівника.";
+            }
+            return RedirectToAction("Index");
+        }
+        public IActionResult WaitersWorkingToday()
+        {
+            string today = DateTime.Now.DayOfWeek.ToString();
+
+            var waitersWorkingToday = _employees
+                .Find(emp => emp.Role == "Waiter" && emp.WorkingDays.Contains(today))
+                .ToList();
+
+            return View("~/Views/Home/WaitersWorkingToday.cshtml", waitersWorkingToday);
+        }
+
+        [HttpGet]
+        public IActionResult GetPasswordByLogin()
+        {
+            return View("~/Views/Home/GetPasswordByLogin.cshtml");
         }
 
         [HttpPost]
-        public IActionResult DeleteEmployee(string id)
+        public IActionResult GetPasswordByLogin(string login)
         {
-            _employees.DeleteOne(emp => emp.Id == id);
-            return RedirectToAction("ListEmployees");
+            var employee = _employees.Find(emp => emp.Login == login).FirstOrDefault();
+
+            if (employee != null)
+            {
+                ViewBag.Password = employee.Password;
+            }
+            else
+            {
+                ViewBag.Error = "Працівника з таким логіном не знайдено.";
+            }
+
+            return View("~/Views/Home/GetPasswordByLogin.cshtml");
         }
     }
 }
