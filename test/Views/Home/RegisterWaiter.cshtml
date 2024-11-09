@@ -1,0 +1,47 @@
+@model YourNamespace.Models.Employee
+
+<h2>Реєстрація</h2>
+
+<form asp-action="RegisterWaiter" method="post">
+    <div class="form-group">
+        <label asp-for="FirstName" class="control-label"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName" class="control-label"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Role" class="control-label"></label>
+        <input asp-for="Role" value="Waiter" class="form-control" readonly />
+    </div>
+
+    <div class="form-group">
+        <label>Дні роботи:</label><br />
+        <input type="checkbox" name="WorkingDays" value="Monday" /> Понеділок<br />
+        <input type="checkbox" name="WorkingDays" value="Tuesday" /> Вівторок<br />
+        <input type="checkbox" name="WorkingDays" value="Wednesday" /> Середа<br />
+        <input type="checkbox" name="WorkingDays" value="Thursday" /> Четвер<br />
+        <input type="checkbox" name="WorkingDays" value="Friday" /> П'ятниця<br />
+        <input type="checkbox" name="WorkingDays" value="Saturday" /> Субота<br />
+        <span asp-validation-for="WorkingDays" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Login" class="control-label"></label>
+        <input asp-for="Login" class="form-control" />
+        <span asp-validation-for="Login" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Password" class="control-label"></label>
+        <input asp-for="Password" type="password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Зареєструвати Офіціанта</button>
+</form>
+
+<a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Назад</a>

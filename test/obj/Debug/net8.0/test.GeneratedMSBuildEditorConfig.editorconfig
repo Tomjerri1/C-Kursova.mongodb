@@ -54,8 +54,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/maksi/Desktop/Лабораторні/3 Курс/1 семестр/Курсач/test/Views/Home/Register.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3Rlci5jc2h0bWw=
+[C:/Users/maksi/Desktop/Лабораторні/3 Курс/1 семестр/Курсач/test/Views/Home/RegisterAdministrator.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3RlckFkbWluaXN0cmF0b3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/maksi/Desktop/Лабораторні/3 Курс/1 семестр/Курсач/test/Views/Home/RegisterWaiter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3RlcldhaXRlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/maksi/Desktop/Лабораторні/3 Курс/1 семестр/Курсач/test/Views/Shared/Error.cshtml]

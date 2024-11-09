@@ -2,13 +2,17 @@
     ViewData["Title"] = "Kursova";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Привіт хуйлан</h1>
-</div>
+<a href="https://www.youtube.com/shorts/0w1eVJsKOZc" target="_blank" style="text-decoration: none; color: inherit;">
+    <div class="text-center">
+        <h1 class="display-4">Привіт хуйлан</h1>
+    </div>
+</a>
+
 <a asp-controller="Dishes" asp-action="AddDish" class="btn btn-primary">Додати страву</a>
 <a asp-controller="Dishes" asp-action="ListDishes" class="btn btn-primary">Переглянути страви</a>
 <a asp-controller="Dishes" asp-action="ManageDishes" class="btn btn-primary">Керування стравами</a>
 <a asp-controller="Tables" asp-action="AddTable" class="btn btn-primary">Додати столик</a>
 <a asp-controller="Tables" asp-action="ListTables" class="btn btn-primary">Переглянути столи</a>
-<a asp-controller="Employees" asp-action="Register" class="btn btn-primary">Реєстрація працівника</a>
+<a asp-controller="Employees" asp-action="RegisterWaiter" class="btn btn-primary">Реєстрація офіціанта</a>
+<a asp-controller="Employees" asp-action="RegisterAdministrator" class="btn btn-primary">Реєстрація адміністратора</a>
 <a asp-controller="Employees" asp-action="ListEmployees" class="btn btn-primary">Список працівників</a>

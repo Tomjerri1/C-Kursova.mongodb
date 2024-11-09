@@ -28,7 +28,7 @@ namespace YourNamespace.Models
         public string Login { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Пароль обов'язковий.")]
-        [DataType(DataType.Password)]
+        [StringLength(16, MinimumLength = 4, ErrorMessage = "Пароль має містити від 4 до 16 символів")]
         public string Password { get; set; } = string.Empty;
     }
 }
