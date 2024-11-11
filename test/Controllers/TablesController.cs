@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using YourNamespace.Models;
+using MongoDB.Bson;
 
 namespace YourNamespace.Controllers
 {
@@ -39,5 +40,22 @@ namespace YourNamespace.Controllers
             var tables = _tables.Find(table => true).ToList();
             return View("~/Views/Home/ListTables.cshtml", tables);
         }
+        [HttpPost]
+        public IActionResult DeleteTable(string id)
+        {
+            if (!string.IsNullOrEmpty(id))
+            {
+                var objectId = new ObjectId(id);
+                _tables.DeleteOne(table => table.Id == objectId);
+            }
+            return RedirectToAction("DeleteTables");
+        }
+
+        public IActionResult DeleteTables()
+        {
+            var tables = _tables.Find(table => true).ToList();
+            return View("~/Views/Home/DeleteTables.cshtml", tables);
+        }
+
     }
 }

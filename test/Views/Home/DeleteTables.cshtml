@@ -1,0 +1,23 @@
+@model IEnumerable<YourNamespace.Models.Table>
+
+<h2>Видалення столів</h2>
+<table>
+    <tr>
+        <th>Номер столу</th>
+        <th>Зайнятість</th>
+        <th>Дія</th>
+    </tr>
+    @foreach (var table in Model)
+    {
+        <tr>
+            <td>@table.TableNumber</td>
+            <td>@(table.IsAvailable ? "Вільний" : "Зайнятий")</td>
+            <td>
+                <form asp-action="DeleteTable" asp-route-id="@table.Id" method="post">
+                    <button type="submit" onclick="return confirm('Ви впевнені, що хочете видалити цей стіл?');">Видалити</button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+<a asp-controller="Home" asp-action="Administrator" class="btn btn-secondary">Назад</a>

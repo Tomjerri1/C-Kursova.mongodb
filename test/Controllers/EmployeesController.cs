@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using YourNamespace.Models;
 using System.Linq;
-using MongoDB.Bson; // Для ObjectId
+using MongoDB.Bson;
 
 namespace YourNamespace.Controllers
 {
