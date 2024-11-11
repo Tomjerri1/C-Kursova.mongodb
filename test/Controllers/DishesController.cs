@@ -32,11 +32,19 @@ namespace YourNamespace.Controllers
             return RedirectToAction("ManageDishes");
         }
 
-        public async Task<IActionResult> ListDishes()
+        public IActionResult ListDishes(string searchQuery)
+    {
+        var query = _dishesCollection.AsQueryable();
+
+        if (!string.IsNullOrEmpty(searchQuery))
         {
-            var dishes = await _dishesCollection.Find(d => true).ToListAsync();
-            return View("~/Views/Home/ListDishes.cshtml", dishes);
+            string normalizedSearchQuery = searchQuery.ToLower();
+            query = query.Where(d => d.Name.ToLower().Contains(normalizedSearchQuery));
         }
+
+        var dishes = query.ToList();
+        return View("~/Views/Home/ListDishes.cshtml", dishes);
+    }
 
         public async Task<IActionResult> ManageDishes()
         {

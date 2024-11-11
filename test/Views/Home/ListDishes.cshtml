@@ -1,10 +1,12 @@
-<!-- Views/Home/ListDishes.cshtml -->
 @model IEnumerable<YourNamespace.Models.Dish>
 
 @{
     ViewData["Title"] = "Список страв";
 }
-
+<form method="get">
+    <input type="text" name="searchQuery" placeholder="Пошук страви..." />
+    <button type="submit">Пошук</button>
+</form>
 <h1>Список страв</h1>
 
 <table class="table">

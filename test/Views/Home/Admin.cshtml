@@ -1,0 +1,17 @@
+<div class="button-container">
+    <a asp-controller="Employees" asp-action="RegisterAdministrator" class="btn btn-primary">Реєстрація адміністратора</a>
+    <a asp-action="ListAdmins" asp-controller="Employees" class="btn btn-primary">Список Адміністраторів</a>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Назад</a>
+</div>
+<style>
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .btn {
+        margin-bottom: 10px;
+    }
+</style>

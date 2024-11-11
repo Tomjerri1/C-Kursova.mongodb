@@ -1,7 +1,8 @@
 @model List<YourNamespace.Models.Employee>
-
-<h2>Title</h2>
-
+<form method="get" action="/Employees/ListAdmins">
+    <input type="text" name="searchQuery" placeholder="Пошук за ім'ям або прізвищем" />
+    <button type="submit">Пошук</button>
+</form>
 <table class="table">
     <thead>
         <tr>
@@ -25,4 +26,4 @@
         }
     </tbody>
 </table>
-<a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Назад</a>
+<a asp-controller="Home" asp-action="Admin" class="btn btn-secondary">Назад</a>

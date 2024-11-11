@@ -68,15 +68,36 @@ namespace YourNamespace.Controllers
 
             return View("~/Views/Home/RegisterAdministrator.cshtml", employee);
         }
-        public IActionResult ListWaiters()
+        public IActionResult ListWaiters(string searchQuery)
         {
-            var waiters = _employees.Find(e => e.Role == "Waiter").ToList();
+            var query = _employees.AsQueryable()
+                .Where(e => e.Role == "Waiter");
+
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                string normalizedSearchQuery = searchQuery.ToLower();
+                query = query.Where(e => e.FirstName.ToLower().Contains(normalizedSearchQuery) || 
+                                        e.LastName.ToLower().Contains(normalizedSearchQuery));
+            }
+
+            var waiters = query.ToList();
             return View("~/Views/Home/ListWaiters.cshtml", waiters);
         }
-        public IActionResult ListAdmins()
+
+        public IActionResult ListAdmins(string searchQuery)
         {
-            var admins = _employees.Find(e => e.Role == "Administrator").ToList();
-            return View("~/Views/Home/ListAdmins.cshtml", admins);
+            var query = _employees.AsQueryable()
+                .Where(e => e.Role == "Administrator");
+
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                string normalizedSearchQuery = searchQuery.ToLower();
+                query = query.Where(e => e.FirstName.ToLower().Contains(normalizedSearchQuery) || 
+                                        e.LastName.ToLower().Contains(normalizedSearchQuery));
+            }
+
+            var admins = query.ToList();
+            return View("~/Views/Home/ListAdmins.cshtml",admins);
         }
 
         public IActionResult DeleteEmployee(string id)
