@@ -10,9 +10,11 @@
 <div class="button-container">
     <a asp-controller="Dishes" asp-action="ListDishes" class="btn btn-primary">Переглянути страви</a>
     <a asp-controller="Tables" asp-action="ListTables" class="btn btn-primary">Переглянути столи</a>
+    <a asp-action="CreateOrder" asp-controller="Orders" class="btn btn-primary">Оформлення замовлення</a>
     <a asp-action="Administrator" asp-controller="Home" class="btn btn-primary">Адміністратор</a>
     <a asp-action="Admin" asp-controller="Home" class="btn btn-primary">Власник</a>
 </div>
+
 
 <a asp-action="GetPasswordByLogin" asp-controller="Employees" class="btn btn-primary top-right-btn">Відновити пароль</a>
 <style>
