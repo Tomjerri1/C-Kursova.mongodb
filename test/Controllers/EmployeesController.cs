@@ -111,7 +111,7 @@ namespace YourNamespace.Controllers
             {
                 TempData["Error"] = "Невірний ідентифікатор працівника.";
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
         public IActionResult WaitersWorkingToday()
         {
